@@ -1,5 +1,5 @@
 from stack import Stack
-
+from error_check import opr_error,val_error
 
 class ThreerBasicOperations:
   operator = ["+", "-", "*"]
@@ -27,7 +27,9 @@ class ThreerBasicOperations:
       if item in ThreerBasicOperations.operator:
         while not postfix.isEmpty():
           op = postfix.peek()
-
+          
+          #에러처리
+          opr_error(item, op)
           #우선순위 높은 연산자 먼저 꺼내기
           if ThreerBasicOperations.precedence(item) <= ThreerBasicOperations.precedence(op):
             output.append(op)
@@ -36,6 +38,8 @@ class ThreerBasicOperations:
             break
         postfix.push(item)
       else:
+        #에러처리
+        val_error(item)
         output.append(item)
 
     while not postfix.isEmpty():
@@ -56,5 +60,9 @@ class ThreerBasicOperations:
         elif token == '*': s.push(val1 * val2)
       #피연산자는 스택으로 출력
       else:
-        s.push(int(token))
-    return s.pop()
+        item = int(token)
+        s.push(item)
+    return print(s.pop())
+  
+
+
