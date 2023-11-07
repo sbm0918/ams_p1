@@ -1,5 +1,5 @@
 from stack import Stack
-from error_check import opr_error,val_error
+from error_check import opr_error, correct_opr_error, val_error, number_of_inputs_error
 
 class ThreerBasicOperations:
   operator = ["+", "-", "*"]
@@ -18,6 +18,18 @@ class ThreerBasicOperations:
         break
       infix.append(userInput)
     return infix
+  
+  def infix_check(infix):
+    number_of_inputs_error(len(infix)) # 저장된 값의 개수가 짝수일 때(마지막 입력 숫자 X) Error!
+    firstOp = ""
+    if len(infix) > 1:
+      firstOp = infix[1]
+      correct_opr_error(firstOp) # 첫 번째 연산자 "+", "-", "*" 가 아닐 시 Error!
+    for index, item in enumerate(infix):
+      if index % 2:
+        opr_error(firstOp, item) # 첫 번째 연산자와 다를 시 Error!
+      else:
+        val_error(item) # 짝수 인덱스의 값이 정수가 아닐 시 Error!
 
   # 후위표기법 적용 ex) 532*+
   def make_postfix(infix):
@@ -28,8 +40,6 @@ class ThreerBasicOperations:
         while not postfix.isEmpty():
           op = postfix.peek()
           
-          #에러처리
-          opr_error(item, op)
           #우선순위 높은 연산자 먼저 꺼내기
           if ThreerBasicOperations.precedence(item) <= ThreerBasicOperations.precedence(op):
             output.append(op)
@@ -38,8 +48,6 @@ class ThreerBasicOperations:
             break
         postfix.push(item)
       else:
-        #에러처리
-        val_error(item)
         output.append(item)
 
     while not postfix.isEmpty():
