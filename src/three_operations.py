@@ -1,5 +1,5 @@
 from stack import Stack
-from error_check import opr_error,val_error,number_of_inputs_error
+from error_check import opr_error, correct_opr_error, val_error, number_of_inputs_error
 
 class ThreerBasicOperations:
   operator = ["+", "-", "*"]
@@ -25,7 +25,7 @@ class ThreerBasicOperations:
     number_of_inputs_error(len(infix)) # 저장된 값의 개수가 짝수일 때(마지막 입력 숫자 X) Error!
     for index, item in enumerate(infix):
       if index % 2:
-        opr_error(item) # 홀수 인덱스의 값이 "+", "-", "*" 가 아닐 시 Error!
+        correct_opr_error(item) # 홀수 인덱스의 값이 "+", "-", "*" 가 아닐 시 Error!
         opr_error(op, item) # 사용되는 연산자가 1개 초과 시 Error!
       else:
         val_error(item) # 짝수 인덱스의 값이 정수가 아닐 시 Error!

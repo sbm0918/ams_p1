@@ -4,7 +4,7 @@ def opr_error(op1, op2):
     if op1 != op2:
         print('Error!')
         sys.exit(0)
-def opr_error(op):
+def correct_opr_error(op):
     if not(op == "+" or op == "-" or op == "*"):
         print('Error!')
         sys.exit(0)
