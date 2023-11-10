@@ -1,6 +1,7 @@
 from stack import Stack
 from error_check import opr_error, correct_opr_error, val_error, number_of_inputs_error
-
+from easter_egg_list import find_easter, able_easter
+import string
 class ThreerBasicOperations:
   operator = ["+", "-", "*"]
 
@@ -16,6 +17,9 @@ class ThreerBasicOperations:
       userInput = input('입력하세요: ')
       if userInput == '=':
         break
+      #이스터에그 처리
+      elif able_easter(userInput):
+        find_easter(userInput)
       infix.append(userInput)
     return infix
   
