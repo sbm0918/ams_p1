@@ -5,7 +5,10 @@ easter_list=["Sofrware Interaction Lab.","빼빼로"]
 
 #이스터에그에 있는지 확인
 def able_easter(i):
-    i = int(i)
+    try:
+        i = int(i)
+    except ValueError:
+        return False
     if i in number_list:
         return True
     else:
