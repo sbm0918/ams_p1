@@ -76,5 +76,5 @@ class ThreerBasicOperations:
         s.push(item)
     return print(s.pop())
   
-
-
+  def show_operators():
+    print("[사용 가능한 연산자 : +, - , *]")
