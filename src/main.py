@@ -11,7 +11,7 @@ def detect_keys(stop_event):
 # Start the key detection in a separate thread
 stop_event = threading.Event()
 key_detection_thread = threading.Thread(target=detect_keys, args = (stop_event,))
-key_detection_thread.damon = True
+key_detection_thread.daemon = True
 key_detection_thread.start()
 
 
