@@ -14,6 +14,7 @@ key_detection_thread = threading.Thread(target=detect_keys, args = (stop_event,)
 key_detection_thread.damon = True
 key_detection_thread.start()
 
+
 ThreerBasicOperations.show_operators()
 
 while True:
