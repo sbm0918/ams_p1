@@ -83,13 +83,16 @@ class ThreerBasicOperations:
   def show_operators():
     print("[사용 가능한 연산자 : +, - , *]")
 
+
 while True:
     infix= ThreerBasicOperations.make_infix()
-    ThreerBasicOperations.infix_check(infix)
+    try:
+        ThreerBasicOperations.infix_check(infix)
+    except:
+        continue  # 에러 발생 시 결과값을 출력하지 않고 다시 입력을 받음
     postfix = ThreerBasicOperations.make_postfix(infix)
     result = ThreerBasicOperations.calculate(postfix)
 
     user_input = input("계속 사용 하시겠습니까? (y/n)")
     if user_input.lower() != 'y':
-        stop_event.set()
-        break
+        break  # 종료 조건
