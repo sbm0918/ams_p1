@@ -23,7 +23,7 @@ while True:
     postfix = ThreerBasicOperations.make_postfix(infix)
     result = ThreerBasicOperations.calculate(postfix)
 
-    user_input = input("계속 사용 하기겠습니까? (y/n)")
+    user_input = input("계속 사용 하시겠습니까? (y/n)")
     if user_input.lower() != 'y':
         stop_event.set()
-        break;
+        break

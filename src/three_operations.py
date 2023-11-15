@@ -2,6 +2,10 @@ from stack import Stack
 from error_check import opr_error, correct_opr_error, val_error, number_of_inputs_error
 from easter_egg_list import find_easter, able_easter
 import string
+import threading
+
+stop_event = threading.Event()
+
 class ThreerBasicOperations:
   operator = ["+", "-", "*"]
 
@@ -78,3 +82,14 @@ class ThreerBasicOperations:
   
   def show_operators():
     print("[사용 가능한 연산자 : +, - , *]")
+
+while True:
+    infix= ThreerBasicOperations.make_infix()
+    ThreerBasicOperations.infix_check(infix)
+    postfix = ThreerBasicOperations.make_postfix(infix)
+    result = ThreerBasicOperations.calculate(postfix)
+
+    user_input = input("계속 사용 하기겠습니까? (y/n)")
+    if user_input.lower() != 'y':
+        stop_event.set()
+        break
