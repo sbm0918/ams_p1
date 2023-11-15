@@ -9,6 +9,9 @@ stop_event = threading.Event()
 class ThreerBasicOperations:
   operator = ["+", "-", "*"]
 
+  def show_operators():
+    print('[사용 가능한 연산자 : +, - , *]')
+      
   def precedence(op):
     if op == '*': return 1
     elif op == '+' or op == '-': return 0
@@ -17,6 +20,7 @@ class ThreerBasicOperations:
   #사용자 입력 ex) 5+3*2
   def make_infix():
     infix = []
+
     while True:
       userInput = input('입력하세요: ')
       if userInput == '=':
@@ -25,11 +29,13 @@ class ThreerBasicOperations:
       elif able_easter(userInput):
         find_easter(userInput)
       infix.append(userInput)
+
     return infix
   
   def infix_check(infix):
     number_of_inputs_error(len(infix)) # 저장된 값의 개수가 짝수일 때(마지막 입력 숫자 X) Error!
     firstOp = ""
+
     if len(infix) > 1:
       firstOp = infix[1]
       correct_opr_error(firstOp) # 첫 번째 연산자 "+", "-", "*" 가 아닐 시 Error!
@@ -38,6 +44,7 @@ class ThreerBasicOperations:
         opr_error(firstOp, item) # 첫 번째 연산자와 다를 시 Error!
       else:
         val_error(item) # 짝수 인덱스의 값이 정수가 아닐 시 Error!
+   
 
   # 후위표기법 적용 ex) 532*+
   def make_postfix(infix):
@@ -80,11 +87,12 @@ class ThreerBasicOperations:
         s.push(item)
     return print(s.pop())
   
-  def show_operators():
-    print("[사용 가능한 연산자 : +, - , *]")
-
+  
+ThreerBasicOperations.show_operators()
 
 while True:
+  
+    
     infix= ThreerBasicOperations.make_infix()
     try:
         ThreerBasicOperations.infix_check(infix)
