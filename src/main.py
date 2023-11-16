@@ -15,8 +15,6 @@ key_detection_thread.daemon = True
 key_detection_thread.start()
 
 
-ThreerBasicOperations.show_operators()
-
 while True:
     infix= ThreerBasicOperations.make_infix()
     ThreerBasicOperations.infix_check(infix)

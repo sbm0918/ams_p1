@@ -1,7 +1,7 @@
 #이스터에그에 들어갈 숫자들
-number_list=[7503,1111]
+number_list=[7503,1111,2024,1225]
 #그 숫자에 맞는 이스터에그들
-easter_list=["Sofrware Interaction Lab.","빼빼로"]
+easter_list=["Sofrware Interaction Lab.","빼빼로","NEW YEAR","Merry Christmas"]
 
 #이스터에그에 있는지 확인
 def able_easter(i):
